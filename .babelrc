@@ -1,0 +1,37 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": ["> 1%", "last 2 versions", "not ie <= 8", "Firefox ESR", "not dead"]
+        },
+        "useBuiltIns": "usage",
+        "corejs": 2
+      }
+    ]
+  ],
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import",
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "corejs": 2
+      }
+    ],
+    "@vue/babel-plugin-transform-vue-jsx",
+    /* [
+      "import", {
+        "libraryName": "view-design",
+        "libraryDirectory": "src/components"
+      }
+    ], */
+    [
+      "component",
+      {
+        "libraryName": "element-ui",
+        "styleLibraryName": "theme-chalk"
+      }
+    ]
+  ]
+}

@@ -1,0 +1,11 @@
+/node_modules/**
+/dist/**
+
+*.js
+*.png
+*.eot
+*.ttf
+*.woff
+
+# 旧的不需打包的样式库
+*.min.css

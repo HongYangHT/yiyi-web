@@ -1,0 +1,33 @@
+$exception: 'exception';
+
+
+.#{$exception} {
+  align-items: center;
+  margin-top: 150px;
+  text-align: center;
+
+  &__content {
+    display: inline-block;
+    flex: auto;
+
+    h1 {
+      margin-bottom: 24px;
+      font-size: 72px;
+      font-weight: 600;
+      line-height: 72px;
+      color: #434e59;
+    }
+
+    &__desc {
+      margin-bottom: 16px;
+      font-size: 20px;
+      line-height: 28px;
+      color: rgba(0, 0, 0, 0.45);
+    }
+  }
+
+  &__action {
+    position: relative;
+    margin-top: 20px;
+  }
+}

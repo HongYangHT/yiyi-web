@@ -1,0 +1,43 @@
+$prefix: 'login-header';
+
+.#{$prefix} {
+  position: relative;
+  display: flex;
+  height: 40px;
+  min-width: 1140px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+
+  &__inner {
+    display: flex;
+    width: 1140px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__logo {
+    width: 66px;
+    height: auto;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__item {
+      padding: 0 18px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      color: #9b9ea7;
+      text-decoration: none;
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+}

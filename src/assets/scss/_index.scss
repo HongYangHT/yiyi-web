@@ -1,0 +1,9 @@
+/*
+ * @Author: sam.hongyang
+ * @LastEditors: sam.hongyang
+ * @Description: 对于样式管理，也需要对对应模块进行修改，建议直接使用style标签在 SFC（单文件组件）中， 便于打包实现tree-shaking
+ * 主要集成组件的样式和主题样式
+ * @Date: 2019-12-19 15:53:06
+ * @LastEditTime: 2020-04-11 22:15:20
+ */
+@import './common/_index.scss';
