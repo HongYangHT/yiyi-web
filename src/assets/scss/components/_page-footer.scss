@@ -1,0 +1,14 @@
+$module_prefix: 'page__footer';
+
+.#{$module_prefix} {
+  position: relative;
+  padding: 20px 0 10px;
+  font-size: 12px;
+  text-align: center;
+  background-image: linear-gradient(180deg, #272c40 2%, #272c40 48%, #272c40);
+
+  a {
+    color: #9b9ea7;
+    text-decoration: none;
+  }
+}
