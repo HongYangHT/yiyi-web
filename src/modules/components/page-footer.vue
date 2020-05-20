@@ -3,12 +3,12 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-05-20 09:40:03
- * @LastEditTime: 2020-05-20 10:02:46
+ * @LastEditTime: 2020-05-20 15:18:36
 -->
 <template>
   <div :class="prefix">
-    <a :class="prefox + '__icp'" href="http://www.beian.gov.cn/portal/registerSystemInfo">
-      <span>浙ICP 备 20016879 号</span>
+    <a :class="prefix + '__icp'" href="http://www.beian.gov.cn/portal/registerSystemInfo">
+      <span>浙ICP 备 20016879 号 @2020</span>
     </a>
   </div>
 </template>

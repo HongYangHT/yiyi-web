@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 常用功能函数
  * @Date: 2020-04-02 17:27:33
- * @LastEditTime: 2020-04-02 17:27:51
+ * @LastEditTime: 2020-05-20 17:48:37
  */
 /**
  * 是否是除 `symbool` 外基本数据类型
@@ -446,4 +446,25 @@ export function uniqueItem(arr, key) {
   }, {})
 
   return Object.values(reduceData)
+}
+
+export function uuid (len, radix) {
+  let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('')
+  let uuid = []
+  let i
+  radix = radix || chars.length
+  if (len) {
+    for (i = 0; i < len; i++) uuid[i] = chars[0 | Math.random() * radix]
+  } else {
+    let r
+    uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-'
+    uuid[14] = '4'
+    for (i = 0; i < 36; i++) {
+      if (!uuid[i]) {
+        r = 0 | Math.random() * 16
+        uuid[i] = chars[(i === 19) ? (r & 0x3) | 0x8 : r]
+      }
+    }
+  }
+  return uuid.join('')
 }

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{zW9K:function(n,t,e){"use strict";e.r(t);var s={data:function(){return{prefix:"dashboard"}}},i=e("KHd+"),r=Object(i.a)(s,(function(){var n=this.$createElement;return(this._self._c||n)("div",{class:this.prefix},[this._v("\n  欢迎来到 YIYI的世界\n")])}),[],!1,null,null,null);t.default=r.exports}}]);

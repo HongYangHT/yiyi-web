@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: vuex 来管理共有状态，并进行模块分层设计
  * @Date: 2019-12-19 16:02:48
- * @LastEditTime: 2020-04-09 23:21:30
+ * @LastEditTime: 2020-05-20 11:42:58
  */
 import Vuex from 'vuex'
 import Vue from 'vue'
@@ -21,6 +21,8 @@ import * as actions from './actions'
 import mutations from './mutations'
 import getters from './getters'
 
+import auth from './module/auth'
+
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -29,7 +31,9 @@ const store = new Vuex.Store({
   actions,
   mutations,
   getters,
-  modules: {},
+  modules: {
+    auth
+  },
   // 缓存vuex状态对象
   plugins: [
     createPersistedState({

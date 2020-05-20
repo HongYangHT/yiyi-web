@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-04-01 16:24:49
- * @LastEditTime: 2020-04-11 22:17:00
+ * @LastEditTime: 2020-05-20 14:32:06
  */
 import Vue from 'vue'
 import App from './modules/app.vue'
@@ -12,6 +12,18 @@ import store from './store'
 import {
   sync
 } from 'vuex-router-sync'
+
+import { Loading, MessageBox, Notification, Message } from 'element-ui'
+
+Vue.prototype.$ELEMENT = { size: 'medium', zIndex: 3000 }
+
+Vue.prototype.$loading = Loading.service
+Vue.prototype.$msgbox = MessageBox
+Vue.prototype.$alert = MessageBox.alert
+Vue.prototype.$confirm = MessageBox.confirm
+Vue.prototype.$prompt = MessageBox.prompt
+Vue.prototype.$notify = Notification
+Vue.prototype.$message = Message
 
 import '@/assets/scss/_index.scss'
 

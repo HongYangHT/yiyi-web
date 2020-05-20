@@ -51,4 +51,38 @@ $prefix: 'login';
     height: auto;
     margin-right: 74px;
   }
+
+  &__form {
+    padding: 20px 30px 0;
+  }
+
+  &__btn__long {
+    width: 100%;
+    margin: 40px auto;
+  }
+
+  &__other {
+    padding: 0 30px;
+    font-size: 13px;
+    color: #9b9ea7;
+
+    &__login {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      a {
+        color: #333;
+        text-decoration: none;
+
+        &:hover {
+          color: #409eff;
+        }
+      }
+
+      .icon-font {
+        margin: 0 20px;
+      }
+    }
+  }
 }
