@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-04-11 22:03:53
- * @LastEditTime: 2020-05-20 19:47:25
+ * @LastEditTime: 2020-05-21 11:49:19
  -->
 <template>
   <div :class="prefix">
@@ -111,7 +111,7 @@ export default {
           required: true, message: '请输入密码', trigger: 'blur'
         }]
       },
-      client_id: process.env.NODE_ENV !== 'production' ? '97c896d5a66a92e01304' : 'ae22cda54b2a70ddf868'
+      client_id: 'ae22cda54b2a70ddf868'
     }
   },
   mounted() {
