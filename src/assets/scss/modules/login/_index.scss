@@ -3,18 +3,20 @@ $prefix: 'login';
 .#{$prefix} {
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(180deg, #272c40 2%, #272c40 48%, #272c40 100%);
+  background: url("../../assets/img/bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  // background-image: linear-gradient(180deg, #272c40 2%, #272c40 48%, #272c40 100%);
 
   &__content {
     display: flex;
     width: 1140px;
     margin: 90px auto 0;
     align-items: top;
-    justify-content: space-between;
+    justify-content: flex-end;
 
-    .el-card {
-      flex: 1;
-    }
+    // .el-card {
+    //   flex: 0 0 0.5;
+    // }
 
     .el-card__body {
       padding: 20px 0;

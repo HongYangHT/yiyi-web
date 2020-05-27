@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: webpack的基础设置
  * @Date: 2020-04-01 16:06:17
- * @LastEditTime: 2020-04-11 22:45:44
+ * @LastEditTime: 2020-05-27 21:29:11
  */
 const path = require('path')
 const webpack = require('webpack')
@@ -130,7 +130,7 @@ const sassLoader = [{
         hmr: process.env.NODE_ENV === 'development',
         publicPath: process.env.NODE_ENV === 'production' ?
           '/assets' :
-          '/'
+          '/css'
       }
     },
     {
@@ -198,7 +198,7 @@ const lessLoader = [{
         hmr: process.env.NODE_ENV === 'development',
         publicPath: process.env.NODE_ENV === 'production' ?
           '/assets' :
-          '/'
+          '/css'
       }
     },
     {
@@ -261,7 +261,7 @@ const stylusLoader = [{
         hmr: process.env.NODE_ENV === 'development',
         publicPath: process.env.NODE_ENV === 'production' ?
           '/assets' :
-          '/'
+          '/css'
       }
     },
     {
@@ -323,7 +323,7 @@ const cssLoader = [{
         hmr: process.env.NODE_ENV === 'development',
         publicPath: process.env.NODE_ENV === 'production' ?
           '/assets' :
-          '/'
+          '/css'
       }
     },
     {

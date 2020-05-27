@@ -3,14 +3,14 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-04-11 22:03:53
- * @LastEditTime: 2020-05-21 11:49:19
+ * @LastEditTime: 2020-05-27 21:22:20
  -->
 <template>
   <div :class="prefix">
     <login-header></login-header>
     <divider :scale="0.3"></divider>
     <div :class="prefix + '__content'">
-      <img :src="loginBaaner" :class="prefix + '__banner'"/>
+      <!-- <img :src="loginBaaner" :class="prefix + '__banner'"/> -->
       <el-card>
         <el-tabs v-model="activeName" :stretch="true" @tab-click="$_onChangeTab">
           <el-tab-pane label="登录" name="login">
@@ -63,8 +63,7 @@
 import LoginHeader from '@/modules/components/login-header.vue'
 import Divider from '@/modules/components/divider.vue'
 import IconFont from '@/modules/components/icon.vue'
-import '@/assets/scss/modules/login/_index.scss'
-import banner from '@/assets/img/login.png'
+// import banner from '@/assets/img/login.png'
 import { Card, Tabs, TabPane, Form, FormItem, Input, Button } from 'element-ui'
 import { mapActions } from 'vuex'
 import { uuid } from '@/common/utils/lib'
@@ -85,7 +84,7 @@ export default {
   data() {
     return  {
       prefix: PREFIX,
-      loginBaaner: banner,
+      // loginBaaner: banner,
       activeName: 'login',
       loginModel: {
         username: '',
@@ -178,3 +177,6 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+@import '@/assets/scss/modules/login/_index.scss';
+</style>
