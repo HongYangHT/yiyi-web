@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-04-11 22:03:53
- * @LastEditTime: 2020-05-27 21:22:20
+ * @LastEditTime: 2020-06-02 17:35:57
  -->
 <template>
   <div :class="prefix">
@@ -16,7 +16,7 @@
           <el-tab-pane label="登录" name="login">
             <el-form ref="login" :class="prefix + '__form'" :model="loginModel" :rules="loginRules" label-width="0px">
               <el-form-item prop="username">
-                <el-input v-model="loginModel.username" placeholder="请输入帐号或者电话"></el-input>
+                <el-input v-model="loginModel.username" placeholder="请输入帐号"></el-input>
               </el-form-item>
               <el-form-item prop="password">
                 <el-input v-model="loginModel.password" type="password" placeholder="请输入密码"></el-input>
@@ -29,7 +29,7 @@
           <el-tab-pane label="注册" name="signin">
             <el-form ref="signin" :class="prefix + '__form'" :model="signinModel" :rules="signinRules" label-width="0px">
               <el-form-item prop="username">
-                <el-input v-model="signinModel.username" placeholder="请输入帐号或者电话"></el-input>
+                <el-input v-model="signinModel.username" placeholder="请输入手机号码或者邮箱地址"></el-input>
               </el-form-item>
               <el-form-item prop="password">
                 <el-input v-model="signinModel.password" type="password" placeholder="请输入密码"></el-input>
@@ -40,7 +40,7 @@
             </el-form>
           </el-tab-pane>
         </el-tabs>
-        <divider :scale="0.3" color="rgba(0, 0, 0, 6)"></divider>
+        <divider :scale="0.3" color="rgba(0, 0, 0, .6)"></divider>
         <div :class="prefix + '__other'">
           <p>第三方登录</p>
           <div :class="prefix + '__other__login'">
@@ -82,6 +82,29 @@ export default {
     [Button.name]: Button
   },
   data() {
+    const validateUsername = (rule, value, cb) => {
+      let phone = /^1[0-9]{10}/,
+          email = /^(\w+\.?)*\w+@(?:\w+\.)\w+$/
+      if (!(phone.test(value) || email.test(value))) {
+        cb(new Error('请输入正确的手机号码或者邮箱地址'))
+      }
+      cb()
+    }
+    const validateName = (rule, value, cb) => {
+      let phone = /^1[0-9]{10}/,
+          email = /^(\w+\.?)*\w+@(?:\w+\.)\w+$/
+      if (!(phone.test(value) || email.test(value))) {
+        cb(new Error('请输入正确的帐号'))
+      }
+      cb()
+    }
+    const validatePassword = (rule, value, cb) => {
+      let reg = /^[0-9A-Za-z]{6,}$/
+      if(!reg.test(value)) {
+        cb(new Error('请输入密码长度不少于6位字符'))
+      }
+      cb()
+    }
     return  {
       prefix: PREFIX,
       // loginBaaner: banner,
@@ -96,18 +119,26 @@ export default {
       },
       loginRules: {
         username: [{
-          required: true, message: '请输入帐号或者电话', trigger: 'blur'
+          required: true, message: '请输入帐号', trigger: 'blur'
+        }, {
+          validator: validateName
         }],
         password: [{
           required: true, message: '请输入密码', trigger: 'blur'
+        }, {
+          validator: validatePassword
         }]
       },
       signinRules: {
         username: [{
-          required: true, message: '请输入帐号或者电话', trigger: 'blur'
+          required: true, message: '请输入手机号码或者邮箱地址', trigger: 'blur'
+        }, {
+          validator: validateUsername
         }],
         password: [{
           required: true, message: '请输入密码', trigger: 'blur'
+        }, {
+          validator: validatePassword
         }]
       },
       client_id: 'ae22cda54b2a70ddf868'
@@ -136,6 +167,11 @@ export default {
   methods: {
     ...mapActions('auth', ['login', 'signin', 'fetchGithubUser']),
     $_onChangeTab(tab) {
+      if (this.activeName === 'login') {
+        this.$refs.login.clearValidate()
+      } else {
+        this.$refs.signin.clearValidate()
+      }
     },
     $_login() {
       this.$refs.login.validate(valid => {

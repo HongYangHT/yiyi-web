@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-05-20 09:40:03
- * @LastEditTime: 2020-05-20 15:18:36
+ * @LastEditTime: 2020-06-02 15:12:42
 -->
 <template>
   <div :class="prefix">
@@ -13,7 +13,6 @@
   </div>
 </template>
 <script>
-import '@/assets/scss/components/_page-footer.scss';
 const PREFIX = 'page__footer';
 export default {
   name: 'PageFooter',
@@ -24,3 +23,6 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+@import "@/assets/scss/components/_page-footer.scss";
+</style>

@@ -1,3 +1,10 @@
+<!--
+ * @Author: sam.hongyang
+ * @LastEditors: sam.hongyang
+ * @Description: function description
+ * @Date: 2020-04-02 18:23:30
+ * @LastEditTime: 2020-06-02 15:14:14
+-->
 <template>
   <div :class="prefix">
     <div :class="prefix + '__content'">
@@ -16,9 +23,6 @@
 
 <script>
 import { Button } from 'element-ui'
-
-import '@/assets/scss/modules/exception/_index.scss'
-
 const PREFIX = 'exception'
 export default {
   name: 'ExceptionFrame',
@@ -57,3 +61,6 @@ export default {
   },
 }
 </script>
+<style lang="scss">
+@import "@/assets/scss/modules/exception/_index.scss";
+</style>

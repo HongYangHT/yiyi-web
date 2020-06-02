@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 登录头部
  * @Date: 2020-04-11 22:06:41
- * @LastEditTime: 2020-05-27 18:46:41
+ * @LastEditTime: 2020-06-02 15:12:22
  -->
 <template>
   <section :class="prefix">
@@ -19,9 +19,6 @@
   </section>
 </template>
 <script>
-import '@/assets/scss/components/_login-header.scss';
-// import logoSrc from '@/assets/img/logo.png'
-
 const PREFIX = 'login-header'
 export default {
   name: 'LoginHeader',
@@ -33,3 +30,6 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+@import "@/assets/scss/components/_login-header.scss";
+</style>

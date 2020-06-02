@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{ArA4:function(e,n,o){"use strict";o.r(n),n.default={t:{code:"english code"}}}}]);

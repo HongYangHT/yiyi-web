@@ -2,10 +2,82 @@ $prefix: 'dashboard';
 
 .#{$prefix} {
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: 100%;
   font-size: 60px;
   color: #53a8ff;
+  flex-direction: column;
+
+  &__banner {
+    width: 100%;
+
+    &__img {
+      height: 500px;
+      background: #175aa0 50%;
+      background-size: cover;
+    }
+  }
+
+  &__nav {
+    width: 100%;
+    max-width: 1170px;
+    margin: 50px auto;
+    cursor: pointer;
+
+    .el-card {
+      height: 300px;
+    }
+
+    &__item {
+      height: 100px;
+    }
+
+    .el-card.is-always-shadow,
+    .el-card.is-hover-shadow:focus,
+    .el-card.is-hover-shadow:hover {
+      box-shadow: 4px 20px 20px 0 rgba(0, 0, 0, .1);
+    }
+
+    &__top {
+      display: flex;
+      height: 220px;
+      font-size: 40px;
+      color: #009a61;
+      align-items: center;
+      justify-content: center;
+      transition: all .5s ease-in-out;
+
+      &:hover {
+        transform: scale(1.3);
+      }
+
+      &__zhihu {
+        color: #0084ff;
+      }
+
+      &__csstricks {
+        color: #ff8a00;
+      }
+    }
+
+    &__bottom {
+      padding: 10px 20px 10px;
+      font-size: 14px;
+
+      h2 {
+        padding: 0;
+        margin: 0 0 4px 0;
+        font-size: 16px;
+      }
+
+      .tip {
+        display: -webkit-box;
+        margin: 0;
+        overflow: hidden;
+        color: #999;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+    }
+  }
 }
