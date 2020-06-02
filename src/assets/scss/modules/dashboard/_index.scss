@@ -25,7 +25,12 @@ $prefix: 'dashboard';
     cursor: pointer;
 
     .el-card {
+      position: relative;
       height: 300px;
+
+      &:hover .#{$prefix}__nav__top > div {
+        transform: scale(1.3);
+      }
     }
 
     &__item {
@@ -36,19 +41,37 @@ $prefix: 'dashboard';
     .el-card.is-hover-shadow:focus,
     .el-card.is-hover-shadow:hover {
       box-shadow: 4px 20px 20px 0 rgba(0, 0, 0, .1);
+
+      .light {
+        left: 100%;
+        transition: all 1s ease;
+      }
+    }
+
+    .light {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      background-image: -webkit-linear-gradient(0deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, .5), hsla(0, 0%, 100%, 0));
+      transform: skewX(-25deg);
     }
 
     &__top {
       display: flex;
       height: 220px;
+      overflow: hidden;
       font-size: 40px;
       color: #009a61;
+      // color: #fff;
+      background: rgba(0, 0, 0, .9);
       align-items: center;
       justify-content: center;
-      transition: all .5s ease-in-out;
 
-      &:hover {
-        transform: scale(1.3);
+      > div {
+        transition: all .5s ease-in-out;
       }
 
       &__zhihu {

@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-05-20 19:44:51
- * @LastEditTime: 2020-06-02 18:00:36
+ * @LastEditTime: 2020-06-02 18:26:48
 -->
 <template>
   <div :class="prefix">
@@ -21,7 +21,9 @@
         <el-col :span="6">
           <el-card :body-style="{ padding: '0px' }" shadow="hover">
             <div :class="prefix + '__nav__top'">
-              SF 思否
+              <div>
+                SF 思否
+              </div>
             </div>
             <divider :scale="0.3" color="rgba(0, 0, 0, .6)"></divider>
             <div :class="prefix + '__nav__bottom'">
@@ -30,12 +32,15 @@
                 <div class="tip">SegmentFault 思否是中国领先的新一代开发者社区和专业的技术媒体。</div>
               </el-tooltip>
             </div>
+            <i class="light"></i>
           </el-card>
         </el-col>
         <el-col :span="6">
           <el-card :body-style="{ padding: '0px' }" shadow="hover">
             <div :class="prefix + '__nav__top'">
-              <el-image src="https://b-gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg" lazy></el-image>
+              <div>
+                <el-image src="https://b-gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg" lazy></el-image>
+              </div>
             </div>
             <divider :scale="0.3" color="rgba(0, 0, 0, .6)"></divider>
             <div :class="prefix + '__nav__bottom'">
@@ -44,12 +49,15 @@
                 <div class="tip">掘金是一个帮助开发者成长的社区，是给开发者用的 Hacker News，给设计师用的 Designer News，和给产品经理用的 Medium。</div>
               </el-tooltip>
             </div>
+            <i class="light"></i>
           </el-card>
         </el-col>
         <el-col :span="6">
           <el-card :body-style="{ padding: '0px' }" shadow="hover">
             <div :class="[prefix + '__nav__top', prefix + '__nav__top__zhihu']">
-              前端外刊
+              <div>
+                前端外刊
+              </div>
             </div>
             <divider :scale="0.3" color="rgba(0, 0, 0, .6)"></divider>
             <div :class="prefix + '__nav__bottom'">
@@ -58,12 +66,15 @@
                 <div class="tip">关注前端技术，探寻深邃思想</div>
               </el-tooltip>
             </div>
+            <i class="light"></i>
           </el-card>
         </el-col>
         <el-col :span="6">
           <el-card :body-style="{ padding: '0px' }" shadow="hover">
             <div :class="[prefix + '__nav__top', prefix + '__nav__top__csstricks']">
-              Css Tricks
+              <div>
+                Css Tricks
+              </div>
             </div>
             <divider :scale="0.3" color="rgba(0, 0, 0, .6)"></divider>
             <div :class="prefix + '__nav__bottom'">
@@ -72,6 +83,7 @@
                 <div class="tip">Css Tricks, CSSer的眼界扩展网站</div>
               </el-tooltip>
             </div>
+            <i class="light"></i>
           </el-card>
         </el-col>
       </el-row>
