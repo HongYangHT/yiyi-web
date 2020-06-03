@@ -73,6 +73,10 @@ $prefix: 'article';
       }
     }
 
+    .pr-20 {
+      padding-right: 20px;
+    }
+
     &__new {
       position: relative;
       padding-right: 20px;
@@ -87,11 +91,18 @@ $prefix: 'article';
 
       &::before {
         position: absolute;
-        top: -12px;
-        right: 6px;
+        top: -6px;
+        right: 4px;
         z-index: 1;
         width: 20px;
         height: 20px;
+        font-family: iconfont;
+        font-size: 16px;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-style: normal;
+        color: #67c23a;
         content: "\e61d";
       }
     }
@@ -122,7 +133,6 @@ $prefix: 'article';
       color: #fff;
 
       &__item {
-        padding-bottom: 15px;
         margin-top: 15px;
         font-size: 12px;
       }
@@ -139,7 +149,7 @@ $prefix: 'article';
 
       .author {
         display: flex;
-        padding: 6px 0;
+        padding: 6px 0 15px;
 
         .el-link {
           margin-left: 10px;
@@ -174,8 +184,15 @@ $prefix: 'article';
       color: #fff;
     }
 
+    .el-pager li.active {
+      color: #409eff;
+    }
+
     button,
-    .el-pager li {
+    .el-pager li,
+    .el-pagination button:disabled,
+    .el-pagination .btn-next,
+    .el-pagination .btn-prev {
       color: #fff;
       background: transparent;
     }

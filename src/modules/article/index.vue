@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-06-03 09:49:18
- * @LastEditTime: 2020-06-03 16:23:38
+ * @LastEditTime: 2020-06-03 17:39:44
 -->
 <template>
 <div :class="prefix">
@@ -11,7 +11,7 @@
   <div :class="prefix + '__content'">
     <div :class="prefix + '__tab'">
       <ul>
-        <li :class="prefix + '__tab__new'">最新内容</li>
+        <li :class="[prefix + '__tab__new', 'pr-20']">最新内容</li>
         <li :class="prefix + '__tab__sf'">SF</li>
         <li :class="prefix + '__tab__juejin'">掘金</li>
         <li :class="prefix + '__tab__zhihu'">前端外刊</li>
@@ -21,15 +21,15 @@
     <divider :scale="0.3" color="rgba(0, 0, 0, .6)"></divider>
     <div :class="prefix + '__tab__content'">
       <div :class="prefix + '__tab__content__item'" v-for="item in topics" :key="item.id">
-        <h4><el-link :href="item.url">{{ item.title }}</el-link></h4>
+        <h4><el-link :href="item.url" target="_blank">{{ item.title }}</el-link></h4>
         <div class="excerpt">
           {{ item.content }}
         </div>
         <div class="author">
-          <span>{{ item.commit }}</span><el-link type="success" :href="item.url">查看详情</el-link>
+          <span>{{ item.commit }}</span><el-link type="success" :href="item.url" target="_blank">查看详情</el-link>
         </div>
+        <divider :scale="0.3" color="rgba(0, 0, 0, .6)"></divider>
       </div>
-      <divider :scale="0.3" color="rgba(0, 0, 0, .6)"></divider>
     </div>
     <div :class="prefix + '__pagination'">
       <el-pagination
@@ -86,15 +86,18 @@ export default {
           ...this.pager
         }
       }).then(result => {
-        this.topics = (result && result.data && result.data.topcis) || [];
-        this.pager.total = (result && result.data && result.data.count) || [];
+        this.topics = (result && result.topics) || [];
+        this.pager.total = (result && result.count) || [];
+      }).catch(() => {
       })
     },
-    $_onSizeChange() {
-
+    $_onSizeChange(pageSize) {
+      this.pager.pageSize = pageSize;
+      this.$_fetchTopics()
     },
-    $_currentChange() {
-
+    $_currentChange(page) {
+      this.pager.page = page;
+      this.$_fetchTopics()
     }
   }
 }

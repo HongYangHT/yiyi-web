@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-06-02 15:11:40
- * @LastEditTime: 2020-06-02 17:52:34
+ * @LastEditTime: 2020-06-03 17:30:35
 -->
 <template>
     <div :class="[prefix, { 'active': active }]">
@@ -20,8 +20,9 @@
               <span>{{ (userInfo && userInfo.nickName) || (userInfo && userInfo.username) }}</span>
             </div>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item command="profile">个人详情</el-dropdown-item>
-              <el-dropdown-item command="logout" divided>退出登录</el-dropdown-item>
+              <el-dropdown-item command="profile" v-if="(userInfo && userInfo.nickName) || (userInfo && userInfo.username)">个人详情</el-dropdown-item>
+              <el-dropdown-item command="logout" divided v-if="(userInfo && userInfo.nickName) || (userInfo && userInfo.username)">退出登录</el-dropdown-item>
+              <el-dropdown-item command="login" v-if="!(userInfo && userInfo.nickName) || (userInfo && userInfo.username)">去登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
@@ -69,6 +70,16 @@ export default {
           break
         case 'logout':
           this.$_logout()
+          break
+        case 'login':
+          this.$router.replace({
+            name: 'login'
+          })
+          break
+        default:
+          this.$router.replace({
+            name: 'login'
+          })
           break
       }
     },

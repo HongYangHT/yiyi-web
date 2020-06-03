@@ -3,20 +3,26 @@
  * @LastEditors: sam.hongyang
  * @Description: 抛出请求，请求分层化设计
  * @Date: 2019-06-27 15:11:19
- * @LastEditTime: 2020-06-03 16:17:20
+ * @LastEditTime: 2020-06-03 17:43:29
  */
 import config from './config'
 import { localStore } from '@/common/utils/storage'
-import { Message, MessageBox } from 'element-ui'
+import { Message, Loading } from 'element-ui'
 import AuthService from './auth'
 import qs from 'qs'
 import ArticleService from './article'
-
-let toast = false
+import router from '@/router'
+let toast = false,
+  loadingInstance = null
 
 const responseError = error => {
   if (error && error.response && error.response.status === 401) {
     Message.error('登录令牌已过期，请退出应用后重新登录')
+    setTimeout(() => {
+      router.replace({
+        name: 'login'
+      })
+    }, 1500);
   } else if (error && error.response && error.response.status !== 200) {
     if (error && error.response && error.response.data && error.response.data.message) {
       Message.error(error.response.data && error.response.data.message)
@@ -24,9 +30,14 @@ const responseError = error => {
       Message.error('系统繁忙，请稍后再试！')
     }
   }
+  loadingInstance && loadingInstance.close()
 }
 
 const requestInterceptor = config => {
+  loadingInstance = Loading.service({
+    fullscreen: true,
+    text: '加载中...'
+  })
   const token = localStore.get('access_token') || ''
 
   if (config.url !== '/login') {
@@ -137,6 +148,7 @@ const responseInterceptor = response => {
   } else {
     !(code + '').startsWith('20') && Message.error(response.data && response.data.message)
   }
+  loadingInstance && loadingInstance.close()
   return response
 }
 
