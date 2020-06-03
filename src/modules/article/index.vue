@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-06-03 09:49:18
- * @LastEditTime: 2020-06-03 17:58:20
+ * @LastEditTime: 2020-06-03 20:19:10
 -->
 <template>
 <div :class="prefix">
@@ -11,27 +11,47 @@
   <div :class="prefix + '__content'">
     <div :class="prefix + '__tab'">
       <ul>
-        <li :class="[prefix + '__tab__new', 'pr-20']">最新内容</li>
-        <li :class="prefix + '__tab__sf'">SF</li>
-        <li :class="prefix + '__tab__juejin'">掘金</li>
-        <li :class="prefix + '__tab__zhihu'">前端外刊</li>
-        <li :class="prefix + '__tab__csstricks'">Css Tricks</li>
+        <li :class="[prefix + '__tab__new', 'pr-20']" @click="$_fetchTopics('')">最新内容</li>
+        <li :class="prefix + '__tab__sf'" @click="$_fetchTopics('sf')">SF</li>
+        <li :class="prefix + '__tab__juejin'" @click="$_fetchTopics('juejin')">掘金</li>
+        <li :class="prefix + '__tab__zhihu'" @click="$_fetchTopics('zhihu')">前端外刊</li>
+        <li :class="prefix + '__tab__csstricks'" @click="$_fetchTopics('cssTricks')">Css Tricks</li>
       </ul>
     </div>
     <divider :scale="0.3" color="rgba(0, 0, 0, .6)"></divider>
-    <div :class="prefix + '__tab__content'">
+    <div :class="prefix + '__tab__content'" v-if="topics && topics.length">
       <div :class="prefix + '__tab__content__item'" v-for="item in topics" :key="item.id">
-        <h4><el-link :href="item.url" target="_blank">{{ item.title }}</el-link></h4>
+        <h4><el-link :href="item.url" target="_blank" @click.native="$_onChangeVisit(item)">{{ item.title }}</el-link></h4>
         <div class="excerpt">
           {{ item.content }}
         </div>
         <div class="author">
-          <span>{{ item.commit }}</span><el-link type="success" :href="item.url" target="_blank">查看详情</el-link>
+          <span>来源：<em>{{ item.from || '未知' }}</em></span>
+          <span class="ml-12">{{ item.commit }}</span>
+          <span class="ml-12 d-flex" v-if="item && item.users && item.users.length">
+            <template v-for="u in (item.users.length > 5 && item.users.slice(4) || item.users)">
+              <el-tooltip :content="u.nickName || u.username" :key="u.id">
+                <el-avatar :src="u.avatar" v-if="u.avatar"></el-avatar>
+                <el-avatar icon="el-icon-user" v-else></el-avatar>
+              </el-tooltip>
+            </template>
+            <span v-if="item.users.length > 5">...</span>
+            <span class="ml-6" v-if="item.users.length > 5">等</span>
+            <span :class="{ 'ml-6': item.users.length <= 5 }">
+              已查看
+            </span>
+          </span>
+          <el-link type="success" :href="item.url" target="_blank" @click.native="$_onChangeVisit(item)">查看详情</el-link>
         </div>
         <divider :scale="0.3" color="rgba(0, 0, 0, .6)"></divider>
       </div>
     </div>
-    <div :class="prefix + '__pagination'">
+    <div :class="prefix + '__tab__content'" v-else>
+      <div class="d-flex text-center">
+        <p class="w-100">暂无数据</p>
+      </div>
+    </div>
+    <div :class="prefix + '__pagination'" v-if="topics && topics.length">
       <el-pagination
         @size-change="$_onSizeChange"
         @current-change="$_currentChange"
@@ -45,7 +65,7 @@
 </div>
 </template>
 <script>
-import { Carousel, CarouselItem, Image, Row, Col, Card, Tooltip, Link, Pagination } from 'element-ui';
+import { Carousel, CarouselItem, Image, Row, Col, Card, Tooltip, Link, Pagination, Avatar } from 'element-ui';
 import InnerHeader from '@/modules/components/header.vue';
 import Divider from '@/modules/components/divider.vue'
 import { mapActions } from 'vuex'
@@ -56,7 +76,8 @@ export default {
     InnerHeader,
     [Tooltip.name]: Tooltip,
     [Link.name]: Link,
-    [Pagination.name]: Pagination
+    [Pagination.name]: Pagination,
+    [Avatar.name]: Avatar
   },
   data() {
     return {
@@ -70,13 +91,14 @@ export default {
     }
   },
   mounted() {
-    this.$_fetchTopics()
+    this.$_fetchTopics(this.$route.query.type)
   },
   methods: {
-    ...mapActions('article', ['fetchTopics']),
-    $_fetchTopics() {
+    ...mapActions('article', ['fetchTopics', 'changeVisit']),
+    $_fetchTopics(from) {
       this.fetchTopics({
         params: {
+          from: from || '',
           ...this.pager
         }
       }).then(result => {
@@ -92,6 +114,13 @@ export default {
     $_currentChange(page) {
       this.pager.page = page;
       this.$_fetchTopics()
+    },
+    $_onChangeVisit(item) {
+      this.changeVisit({
+        params: {
+          id: item.id
+        }
+      }).then(result => {})
     }
   }
 }

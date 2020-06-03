@@ -31,3 +31,24 @@ body {
 .el-tooltip__popper {
   max-width: 260px;
 }
+
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
+.ml-6 {
+  margin-left: 6px;
+}
+
+.mr-6 {
+  margin-right: 6px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.w-100 {
+  width: 100%;
+}
