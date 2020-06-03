@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-06-02 15:11:40
- * @LastEditTime: 2020-06-03 17:30:35
+ * @LastEditTime: 2020-06-03 17:51:40
 -->
 <template>
     <div :class="[prefix, { 'active': active }]">
@@ -22,7 +22,7 @@
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item command="profile" v-if="(userInfo && userInfo.nickName) || (userInfo && userInfo.username)">个人详情</el-dropdown-item>
               <el-dropdown-item command="logout" divided v-if="(userInfo && userInfo.nickName) || (userInfo && userInfo.username)">退出登录</el-dropdown-item>
-              <el-dropdown-item command="login" v-if="!(userInfo && userInfo.nickName) || (userInfo && userInfo.username)">去登录</el-dropdown-item>
+              <el-dropdown-item command="login" v-if="!((userInfo && userInfo.nickName) || (userInfo && userInfo.username))">去登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>

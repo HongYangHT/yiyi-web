@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-06-03 09:49:18
- * @LastEditTime: 2020-06-03 17:39:44
+ * @LastEditTime: 2020-06-03 17:58:20
 -->
 <template>
 <div :class="prefix">
@@ -47,7 +47,6 @@
 <script>
 import { Carousel, CarouselItem, Image, Row, Col, Card, Tooltip, Link, Pagination } from 'element-ui';
 import InnerHeader from '@/modules/components/header.vue';
-import banner from '@/assets/img/banner.jpg';
 import Divider from '@/modules/components/divider.vue'
 import { mapActions } from 'vuex'
 const PREFIX = 'article'
@@ -62,11 +61,6 @@ export default {
   data() {
     return {
       prefix: PREFIX,
-      banners: [/* {
-        img: 'http://cdn.alloyteam.com/assets/img/banner_2-37b0e7.jpg'
-      },  */{
-        img: banner
-      }],
       pager: {
         pageSize: 10,
         page: 1,

@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: webpack的基础设置
  * @Date: 2020-04-01 16:06:17
- * @LastEditTime: 2020-05-27 21:29:11
+ * @LastEditTime: 2020-06-03 18:05:32
  */
 const path = require('path')
 const webpack = require('webpack')
@@ -12,8 +12,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 // 用于style验证
 const StyleLintPlugin = require('stylelint-webpack-plugin')
-// NOTE: 用于加速打包构建
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
+
 const {
   CleanWebpackPlugin
 } = require('clean-webpack-plugin')
@@ -453,7 +452,6 @@ module.exports = {
     }),
     new webpack.HashedModuleIdsPlugin(),
     new webpack.BannerPlugin(banner),
-    new HardSourceWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: process.env.NODE_ENV !== 'production' ? 'css/[name].css' : 'css/[name].[contenthash].css',
       chunkFilename: process.env.NODE_ENV !== 'production' ? 'css/[id].css' : 'css/[name].[contenthash].css',
