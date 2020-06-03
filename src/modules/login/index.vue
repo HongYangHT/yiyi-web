@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-04-11 22:03:53
- * @LastEditTime: 2020-06-03 17:04:57
+ * @LastEditTime: 2020-06-03 20:28:31
  -->
 <template>
   <div :class="prefix">
@@ -47,12 +47,12 @@
             <a :href="`https://github.com/login/oauth/authorize?client_id=${client_id}`" target="_self">
               <icon-font name="github" :size="36"></icon-font>
             </a>
-            <a href="" target="_self">
+            <!-- <a href="" target="_self">
               <icon-font name="qq" :size="36"></icon-font>
             </a>
             <a href="" target="_self">
               <icon-font name="weixin" :size="36"></icon-font>
-            </a>
+            </a> -->
           </div>
         </div>
       </el-card>
