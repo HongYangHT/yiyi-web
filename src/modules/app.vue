@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-04-02 15:27:04
- * @LastEditTime: 2020-05-20 09:59:13
+ * @LastEditTime: 2020-06-03 11:58:14
  -->
 <template>
   <section :class="prefix">
@@ -19,7 +19,7 @@ import PageFooter from '@/modules/components/page-footer.vue'
 const PREFIX = 'app'
 export default {
   components: {
-    PageFooter
+    PageFooter,
   },
   data() {
     return {

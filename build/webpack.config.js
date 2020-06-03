@@ -163,7 +163,7 @@ const sassLoader = [{
               'Safari >= 6',
               'ie > 8'
             ],
-            grid: true
+            grid: false
           }),
           flexibility,
           will_change,
@@ -231,7 +231,7 @@ const lessLoader = [{
               'Safari >= 6',
               'ie > 8'
             ],
-            grid: true
+            grid: false
           }),
           flexibility,
           will_change,
@@ -294,7 +294,7 @@ const stylusLoader = [{
               'Safari >= 6',
               'ie > 8'
             ],
-            grid: true
+            grid: false
           }),
           flexibility,
           will_change,
@@ -360,7 +360,7 @@ const cssLoader = [{
               'Safari >= 6',
               'ie > 8'
             ],
-            grid: true
+            grid: false
           }),
           flexibility,
           will_change,

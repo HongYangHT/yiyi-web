@@ -3,23 +3,26 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-05-20 19:44:51
- * @LastEditTime: 2020-06-02 18:26:48
+ * @LastEditTime: 2020-06-03 11:58:29
 -->
 <template>
   <div :class="prefix">
-    <!-- 欢迎来到 YIYI 的世界 -->
     <inner-header></inner-header>
+    <!-- 欢迎来到 YIYI 的世界 -->
     <div :class="prefix + '__banner'">
       <el-carousel :loop="false" arrow="nerver" indicator-position="none" trigger="click" height="500px">
         <el-carousel-item v-for="(item, index) in banners" :key="index">
-          <div :class="prefix + '__banner__img'" :style="{ backgroundImage: `url(${ item.img })` }"></div>
+          <div :class="prefix + '__banner__img'" :style="{ backgroundImage: `url(${ item.img })` }">
+            <h2>每天学习一点，让工作更轻松</h2>
+            <small>Learn a little every day to make work easier.</small>
+          </div>
         </el-carousel-item>
       </el-carousel>
     </div>
     <div :class="prefix + '__nav'">
       <el-row :gutter="10">
         <el-col :span="6">
-          <el-card :body-style="{ padding: '0px' }" shadow="hover">
+          <el-card :body-style="{ padding: '0px' }" shadow="hover" @click.native="$_navTo('sf')">
             <div :class="prefix + '__nav__top'">
               <div>
                 SF 思否
@@ -36,7 +39,7 @@
           </el-card>
         </el-col>
         <el-col :span="6">
-          <el-card :body-style="{ padding: '0px' }" shadow="hover">
+          <el-card :body-style="{ padding: '0px' }" shadow="hover" @click.native="$_navTo('juejin')">
             <div :class="prefix + '__nav__top'">
               <div>
                 <el-image src="https://b-gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg" lazy></el-image>
@@ -53,7 +56,7 @@
           </el-card>
         </el-col>
         <el-col :span="6">
-          <el-card :body-style="{ padding: '0px' }" shadow="hover">
+          <el-card :body-style="{ padding: '0px' }" shadow="hover" @click.native="$_navTo('wk')">
             <div :class="[prefix + '__nav__top', prefix + '__nav__top__zhihu']">
               <div>
                 前端外刊
@@ -70,7 +73,7 @@
           </el-card>
         </el-col>
         <el-col :span="6">
-          <el-card :body-style="{ padding: '0px' }" shadow="hover">
+          <el-card :body-style="{ padding: '0px' }" shadow="hover" @click.native="$_navTo('csstricks')">
             <div :class="[prefix + '__nav__top', prefix + '__nav__top__csstricks']">
               <div>
                 Css Tricks
@@ -91,9 +94,10 @@
   </div>
 </template>
 <script>
-import InnerHeader from '@/modules/components/header.vue';
 import { Carousel, CarouselItem, Image, Row, Col, Card, Tooltip } from 'element-ui';
+import InnerHeader from '@/modules/components/header.vue';
 import Divider from '@/modules/components/divider.vue'
+import banner from '@/assets/img/banner.jpg'
 const PREFIX = 'dashboard'
 export default {
   components: {
@@ -113,8 +117,18 @@ export default {
       banners: [/* {
         img: 'http://cdn.alloyteam.com/assets/img/banner_2-37b0e7.jpg'
       },  */{
-        img: 'http://cdn.alloyteam.com/assets/img/banner_1-ec70a4.jpg'
+        img: banner
       }]
+    }
+  },
+  methods: {
+    $_navTo(type) {
+      this.$router.push({
+        name: 'article',
+        query: {
+          type
+        }
+      })
     }
   }
 }

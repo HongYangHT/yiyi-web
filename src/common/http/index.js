@@ -3,13 +3,14 @@
  * @LastEditors: sam.hongyang
  * @Description: 抛出请求，请求分层化设计
  * @Date: 2019-06-27 15:11:19
- * @LastEditTime: 2020-05-20 17:01:15
+ * @LastEditTime: 2020-06-03 16:17:20
  */
 import config from './config'
 import { localStore } from '@/common/utils/storage'
 import { Message, MessageBox } from 'element-ui'
 import AuthService from './auth'
 import qs from 'qs'
+import ArticleService from './article'
 
 let toast = false
 
@@ -142,6 +143,21 @@ const responseInterceptor = response => {
 export const authService = new AuthService({
   baseUrl: process.env.NODE_ENV === 'production' ? config.production : config.development,
   basePath: 'auth',
+  responseError: error => {
+    responseError(error)
+  },
+  requestError: error => {},
+  responseInterceptor: config => {
+    return responseInterceptor(config)
+  },
+  requestInterceptor: config => {
+    return requestInterceptor(config)
+  },
+})
+
+export const articleService = new ArticleService({
+  baseUrl: process.env.NODE_ENV === 'production' ? config.production : config.development,
+  basePath: 'topic',
   responseError: error => {
     responseError(error)
   },
