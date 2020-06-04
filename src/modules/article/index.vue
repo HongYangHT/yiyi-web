@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-06-03 09:49:18
- * @LastEditTime: 2020-06-03 20:19:10
+ * @LastEditTime: 2020-06-04 09:22:02
 -->
 <template>
 <div :class="prefix">
@@ -11,11 +11,11 @@
   <div :class="prefix + '__content'">
     <div :class="prefix + '__tab'">
       <ul>
-        <li :class="[prefix + '__tab__new', 'pr-20']" @click="$_fetchTopics('')">最新内容</li>
-        <li :class="prefix + '__tab__sf'" @click="$_fetchTopics('sf')">SF</li>
-        <li :class="prefix + '__tab__juejin'" @click="$_fetchTopics('juejin')">掘金</li>
-        <li :class="prefix + '__tab__zhihu'" @click="$_fetchTopics('zhihu')">前端外刊</li>
-        <li :class="prefix + '__tab__csstricks'" @click="$_fetchTopics('cssTricks')">Css Tricks</li>
+        <li :class="[prefix + '__tab__new', 'pr-20']" @click="$_fetchTopicsSearch('')">最新内容</li>
+        <li :class="prefix + '__tab__sf'" @click="$_fetchTopicsSearch('sf')">SF</li>
+        <li :class="prefix + '__tab__juejin'" @click="$_fetchTopicsSearch('juejin')">掘金</li>
+        <li :class="prefix + '__tab__zhihu'" @click="$_fetchTopicsSearch('zhihu')">前端外刊</li>
+        <li :class="prefix + '__tab__csstricks'" @click="$_fetchTopicsSearch('cssTricks')">Css Tricks</li>
       </ul>
     </div>
     <divider :scale="0.3" color="rgba(0, 0, 0, .6)"></divider>
@@ -87,18 +87,26 @@ export default {
         page: 1,
         total: 0
       },
-      topics: []
+      topics: [],
+      from: ''
     }
   },
   mounted() {
-    this.$_fetchTopics(this.$route.query.type)
+    this.from = this.$route.query.type
+    this.pager.page = 1
+    this.$_fetchTopics()
   },
   methods: {
     ...mapActions('article', ['fetchTopics', 'changeVisit']),
-    $_fetchTopics(from) {
+    $_fetchTopicsSearch(from) {
+      this.pager.page = 1
+      this.from = from
+      this.$_fetchTopics()
+    },
+    $_fetchTopics() {
       this.fetchTopics({
         params: {
-          from: from || '',
+          from: this.from || '',
           ...this.pager
         }
       }).then(result => {

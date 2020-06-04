@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-05-20 19:44:51
- * @LastEditTime: 2020-06-03 18:03:40
+ * @LastEditTime: 2020-06-04 09:32:30
 -->
 <template>
   <div :class="prefix">
@@ -90,11 +90,14 @@
           </el-card>
         </el-col>
       </el-row>
+      <el-row :gutter="10">
+        <el-col :span="24" class="text-center f-font-20 mt-30"><el-link type="primary" href="/article">查看更多&gt;&gt;</el-link></el-col>
+      </el-row>
     </div>
   </div>
 </template>
 <script>
-import { Carousel, CarouselItem, Image, Row, Col, Card, Tooltip } from 'element-ui';
+import { Carousel, CarouselItem, Image, Row, Col, Card, Tooltip, Link } from 'element-ui';
 import InnerHeader from '@/modules/components/header.vue';
 import Divider from '@/modules/components/divider.vue'
 import banner from '@/assets/img/banner.jpg'
@@ -109,7 +112,8 @@ export default {
     [Row.name]: Row,
     [Col.name]: Col,
     [Card.name]: Card,
-    [Tooltip.name]: Tooltip
+    [Tooltip.name]: Tooltip,
+    [Link.name]: Link
   },
   data() {
     return {
