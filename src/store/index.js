@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: vuex 来管理共有状态，并进行模块分层设计
  * @Date: 2019-12-19 16:02:48
- * @LastEditTime: 2020-06-03 15:37:39
+ * @LastEditTime: 2020-06-10 17:45:22
  */
 import Vuex from 'vuex'
 import Vue from 'vue'
@@ -23,6 +23,7 @@ import getters from './getters'
 
 import auth from './module/auth'
 import article from './module/article'
+import weather from './module/weather'
 
 Vue.use(Vuex)
 
@@ -35,6 +36,7 @@ const store = new Vuex.Store({
   modules: {
     auth,
     article,
+    weather
   },
   // 缓存vuex状态对象
   plugins: [

@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 抛出请求，请求分层化设计
  * @Date: 2019-06-27 15:11:19
- * @LastEditTime: 2020-06-03 17:43:29
+ * @LastEditTime: 2020-06-10 17:57:14
  */
 import config from './config'
 import { localStore } from '@/common/utils/storage'
@@ -11,6 +11,7 @@ import { Message, Loading } from 'element-ui'
 import AuthService from './auth'
 import qs from 'qs'
 import ArticleService from './article'
+import WeatherService from './weather'
 import router from '@/router'
 let toast = false,
   loadingInstance = null
@@ -170,6 +171,21 @@ export const authService = new AuthService({
 export const articleService = new ArticleService({
   baseUrl: process.env.NODE_ENV === 'production' ? config.production : config.development,
   basePath: 'topic',
+  responseError: error => {
+    responseError(error)
+  },
+  requestError: error => {},
+  responseInterceptor: config => {
+    return responseInterceptor(config)
+  },
+  requestInterceptor: config => {
+    return requestInterceptor(config)
+  },
+})
+
+export const weatherService = new WeatherService({
+  baseUrl: process.env.NODE_ENV === 'production' ? config.production : config.development,
+  basePath: 'weather',
   responseError: error => {
     responseError(error)
   },
