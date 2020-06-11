@@ -22,6 +22,7 @@ $prefix: 'header';
 
     .#{$prefix}__logo {
       color: #000;
+      background-image: url('../../assets/img/logo-active.png');
     }
 
     .#{$prefix}__menu,
@@ -42,8 +43,12 @@ $prefix: 'header';
   }
 
   &__logo {
-    height: auto;
+    width: 160px;
+    height: 60px;
     color: #fff;
+    background-image: url('../../assets/img/logo.png');
+    background-repeat: no-repeat;
+    background-size: auto 100%;
   }
 
   &__menu {

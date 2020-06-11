@@ -3,12 +3,12 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-05-20 19:44:51
- * @LastEditTime: 2020-06-11 13:46:02
+ * @LastEditTime: 2020-06-11 17:15:42
 -->
 <template>
   <div :class="prefix">
     <inner-header></inner-header>
-    <!-- 欢迎来到 Fun4  的世界 -->
+    <!-- 欢迎来到 Fun4 Study 的世界 -->
     <div :class="prefix + '__banner'">
       <el-carousel :loop="false" arrow="nerver" indicator-position="none" trigger="click" height="500px">
         <el-carousel-item v-for="(item, index) in banners" :key="index">

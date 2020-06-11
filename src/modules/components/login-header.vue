@@ -3,13 +3,15 @@
  * @LastEditors: sam.hongyang
  * @Description: 登录头部
  * @Date: 2020-04-11 22:06:41
- * @LastEditTime: 2020-06-11 13:44:42
+ * @LastEditTime: 2020-06-11 14:19:22
  -->
 <template>
   <section :class="prefix">
     <section :class="prefix + '__inner'">
       <!-- <img :src="logo" :class="prefix + '__logo'" /> -->
-      <div :class="prefix + '__logo'">Fun4 学习</div>
+      <div :class="prefix + '__logo'">
+        <img :src="logo"/>
+      </div>
       <section :class="[prefix + '__right', 'ml-auto']">
         <!-- <a href="" :class="prefix + '__right__item'">登录/注册</a> -->
         <a href="" :class="prefix + '__right__item'">关于我</a>
@@ -19,13 +21,14 @@
   </section>
 </template>
 <script>
+import logoSrc from '@/assets/img/logo.png'
 const PREFIX = 'login-header'
 export default {
   name: 'LoginHeader',
   data() {
     return {
       prefix: PREFIX,
-      // logo: logoSrc
+      logo: logoSrc
     }
   }
 }

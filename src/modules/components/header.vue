@@ -3,12 +3,12 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-06-02 15:11:40
- * @LastEditTime: 2020-06-11 13:45:54
+ * @LastEditTime: 2020-06-11 14:17:57
 -->
 <template>
     <div :class="[prefix, { 'active': active }]">
       <div :class="prefix + '__content'">
-        <div :class="prefix + '__logo'">Fun4 学习</div>
+        <div :class="prefix + '__logo'"></div>
         <div :class="prefix + '__menu'">
           <el-dropdown @command="$_onCommand">
             <div :class="prefix + '__dropdown'">

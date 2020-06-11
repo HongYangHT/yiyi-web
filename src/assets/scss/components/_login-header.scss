@@ -20,6 +20,11 @@ $prefix: 'login-header';
   &__logo {
     height: auto;
     color: #fff;
+
+    img {
+      width: auto;
+      height: 40px;
+    }
   }
 
   &__right {
