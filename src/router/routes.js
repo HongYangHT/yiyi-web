@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 用于分层设计，将路由提取出来, 便于做权限相关设置
  * @Date: 2020-04-09 22:43:04
- * @LastEditTime: 2020-07-01 17:12:57
+ * @LastEditTime: 2020-07-01 18:24:40
  */
 import login from './module/login'
 import dashboard from './module/dashboard'
@@ -11,5 +11,5 @@ import article from './module/article'
 export default [
   ...login,
   ...dashboard,
-  ...article,
+  ...article
 ]
