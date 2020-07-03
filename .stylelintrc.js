@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 样式lint的配置
  * @Date: 2019-12-30 15:36:01
- * @LastEditTime: 2020-04-09 23:20:42
+ * @LastEditTime: 2020-07-03 17:05:46
  */
 module.exports = {
   extends: ["stylelint-config-standard" /* , "stylelint-prettier/recommended" */ ],

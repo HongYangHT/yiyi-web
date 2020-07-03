@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: webpack的开发设置
  * @Date: 2020-04-01 16:06:43
- * @LastEditTime: 2020-06-03 18:05:41
+ * @LastEditTime: 2020-07-03 17:09:42
  */
 const merge = require('webpack-merge')
 const webpack = require('webpack')
@@ -14,8 +14,8 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const checkVersion = require('./check-version')
 const path = require('path')
 const mock = require('../mockjs')
-// NOTE: 用于加速打包构建
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
+// NOTE: 用于加速打包构建, 有bug 会存在无法更新的情况
+// const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 checkVersion()
 
 let devConfig = merge(webpackConfig, {
