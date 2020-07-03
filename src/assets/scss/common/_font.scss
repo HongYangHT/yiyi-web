@@ -1,0 +1,11 @@
+/* stylelint-disable */
+@font-face {
+  font-family: 'webfont';
+  font-display: swap;
+  src: url('../../assets/fonts/webfont.eot'); /* IE9 */
+  src: url('../../assets/fonts/webfont.eot?#iefix') format('embedded-opentype'),
+    url('../../assets/fonts/webfont.woff2') format('woff2'),
+    url('../../assets/fonts/webfont.woff') format('woff'),
+    url('../../assets/fonts/webfont.ttf') format('truetype'),
+    url('../../assets/fonts/webfont.svg#AlibabaPuHuiTiL') format('svg'); /* iOS 4.1- */
+}
