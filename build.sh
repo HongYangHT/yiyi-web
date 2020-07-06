@@ -3,7 +3,7 @@
  # @LastEditors: sam.hongyang
 # @Description: function description
 # @Date: 2020-07-01 12:10:27
- # @LastEditTime: 2020-07-02 15:23:07
+ # @LastEditTime: 2020-07-06 09:19:04
 ###
 echo "start deployment"
 # WEB_PATH='/root/workspace'
@@ -32,7 +32,6 @@ function creatmd5()
 if [ ! -f $md5 ] ; then
   echo "md5file is not exsit,create md5file......."
   creatmd5
-  exit
 fi
 
 # 读取旧的md5信息
