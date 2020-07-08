@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-07-03 15:00:16
- * @LastEditTime: 2020-07-08 20:10:11
+ * @LastEditTime: 2020-07-08 21:15:00
 -->
 <template>
   <div :class="prefix">
@@ -163,10 +163,9 @@ import 'tinymce/plugins/media';
 import 'tinymce/plugins/autoresize';
 
 import 'tinymce/skins/ui/oxide/skin.min.css'
+import 'tinymce/skins/ui/oxide/skin.mobile.min.css'
 import 'tinymce/skins/ui/oxide/content.min.css'
-import 'tinymce/skins/content/default/content.css'
-
-require.context('file-loader?name=[path][name].[ext]&context=node_modules/tinymce!tinymce/skins', true, /.*/);
+import 'tinymce/skins/content/default/content.min.css'
 
 const PREFIX = 'about-me'
 let resume = {
