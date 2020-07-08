@@ -3,11 +3,15 @@
  # @LastEditors: sam.hongyang
 # @Description: function description
 # @Date: 2020-07-01 12:10:27
- # @LastEditTime: 2020-07-06 09:19:04
+ # @LastEditTime: 2020-07-08 20:39:19
 ###
 echo "start deployment"
 # WEB_PATH='/root/workspace'
 # cd $WEB_PATH
+
+echo "ping md5 file"
+# 记录 md5值 的文件
+md5=package_md5
 
 echo "fetching from remote..."
 git reset --hard origin/master
@@ -16,8 +20,6 @@ git pull
 
 # 检测的文件
 package=package.json
-# 记录 md5值 的文件
-md5=package_md5
 
 # 创建新的md5信息
 package_md5_new=$(md5sum -b $package | awk '{print $1}'|sed 's/ //g')
