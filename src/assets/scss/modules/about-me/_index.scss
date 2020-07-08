@@ -104,6 +104,19 @@ $prefix: 'about-me';
         height: 150px;
         font-size: 14px;
       }
+
+      .el-form-item__label {
+        color: #fff;
+      }
+
+      .el-range-input {
+        color: #fff;
+        background: transparent;
+      }
+
+      .el-range-separator {
+        color: #fff;
+      }
     }
   }
 
@@ -140,6 +153,14 @@ $prefix: 'about-me';
 
     &__form {
       margin-top: 25px;
+
+      &--empty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 150px;
+        font-size: 14px;
+      }
     }
   }
 
@@ -154,6 +175,14 @@ $prefix: 'about-me';
 
     &__form {
       margin-top: 25px;
+
+      &--empty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 150px;
+        font-size: 14px;
+      }
     }
   }
 
@@ -172,6 +201,41 @@ $prefix: 'about-me';
     position: absolute;
     top: 50%;
     left: 10px;
+    color: #c0c4cc;
     transform: translate(0, -50%);
+  }
+
+  .tox .tox-toolbar-overlord,
+  .tox .tox-edit-area__iframe {
+    background: transparent;
+  }
+
+  .tox .tox-toolbar,
+  .tox .tox-toolbar__overflow,
+  .tox .tox-toolbar__primary {
+    background: transparent;
+  }
+
+  .tox .tox-toolbar__primary {
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 9);
+  }
+
+  .tox .tox-tbtn svg {
+    fill: #fff;
+  }
+
+  .tox .tox-tbtn--bespoke .tox-tbtn__select-label {
+    color: #fff;
+  }
+
+  .tox .tox-statusbar {
+    color: #fff;
+    background: transparent;
+  }
+
+  .tox .tox-statusbar__path-item,
+  .tox .tox-statusbar__wordcount,
+  .tox .tox-statusbar a {
+    color: #fff;
   }
 }
