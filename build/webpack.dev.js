@@ -59,7 +59,7 @@ let devConfig = merge(webpackConfig, {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new HardSourceWebpackPlugin(),
+    // new HardSourceWebpackPlugin(),
   ]
 })
 
