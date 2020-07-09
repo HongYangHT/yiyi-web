@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-06-03 09:49:18
- * @LastEditTime: 2020-06-04 09:22:02
+ * @LastEditTime: 2020-07-09 11:40:17
 -->
 <template>
 <div :class="prefix">
@@ -93,7 +93,8 @@ export default {
   },
   mounted() {
     this.from = this.$route.query.type
-    this.pager.page = 1
+    let page = window.location.hash
+    this.pager.page = page ? +(page.replace(/#/, '')) : 1
     this.$_fetchTopics()
   },
   methods: {
@@ -112,6 +113,7 @@ export default {
       }).then(result => {
         this.topics = (result && result.topics) || [];
         this.pager.total = (result && result.count) || [];
+        window.location.hash = this.pager.page
       }).catch(() => {
       })
     },
