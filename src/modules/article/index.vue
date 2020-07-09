@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-06-03 09:49:18
- * @LastEditTime: 2020-07-09 11:40:17
+ * @LastEditTime: 2020-07-09 12:03:49
 -->
 <template>
 <div :class="prefix">
@@ -69,6 +69,7 @@ import { Carousel, CarouselItem, Image, Row, Col, Card, Tooltip, Link, Paginatio
 import InnerHeader from '@/modules/components/header.vue';
 import Divider from '@/modules/components/divider.vue'
 import { mapActions } from 'vuex'
+import { getParameterFromHash, concatHashParameters } from '@/common/utils/lib'
 const PREFIX = 'article'
 export default {
   components: {
@@ -93,8 +94,7 @@ export default {
   },
   mounted() {
     this.from = this.$route.query.type
-    let page = window.location.hash
-    this.pager.page = page ? +(page.replace(/#/, '')) : 1
+    this.pager.page = getParameterFromHash('page') || 1
     this.$_fetchTopics()
   },
   methods: {
@@ -113,7 +113,7 @@ export default {
       }).then(result => {
         this.topics = (result && result.topics) || [];
         this.pager.total = (result && result.count) || [];
-        window.location.hash = this.pager.page
+        concatHashParameters('page', this.pager.page)
       }).catch(() => {
       })
     },

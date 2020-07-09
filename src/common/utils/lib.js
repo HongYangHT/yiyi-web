@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: 常用功能函数
  * @Date: 2020-04-02 17:27:33
- * @LastEditTime: 2020-05-20 17:48:37
+ * @LastEditTime: 2020-07-09 14:01:03
  */
 /**
  * 是否是除 `symbool` 外基本数据类型
@@ -467,4 +467,36 @@ export function uuid (len, radix) {
     }
   }
   return uuid.join('')
+}
+
+export function getParameterFromHash(name) {
+  let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i'),
+    hashParameters = window.location.hash.replace(/#/, ''),
+    parameter = hashParameters.match(reg)
+
+    if (parameter != null) {
+      return decodeURIComponent(parameter[2]);
+  }
+  return null;
+}
+
+export function concatHashParameters(key, value) {
+  let hashParameters = window.location.hash.replace(/#/, ''),
+    exist = getParameterFromHash(key)
+  if (exist) {
+    let reg = new RegExp(`&?${key}=${exist}`, 'ig')
+    hashParameters = hashParameters.replace(reg, '')
+    if (hashParameters) {
+      hashParameters += `&${key}=${value}`
+    } else {
+      hashParameters = `${key}=${value}`
+    }
+  } else {
+    if (hashParameters) {
+      hashParameters += `&${key}=${value}`
+    } else {
+      hashParameters = `${key}=${value}`
+    }
+  }
+  window.location.hash = hashParameters
 }
