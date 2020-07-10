@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: webpack的打包构建
  * @Date: 2020-04-01 16:06:50
- * @LastEditTime: 2020-04-09 22:56:45
+ * @LastEditTime: 2020-07-10 10:55:51
  */
 const merge = require('webpack-merge')
 const webpackConfig = require('./webpack.config')
