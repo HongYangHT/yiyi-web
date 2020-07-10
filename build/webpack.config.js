@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: webpack的基础设置
  * @Date: 2020-04-01 16:06:17
- * @LastEditTime: 2020-06-03 18:05:32
+ * @LastEditTime: 2020-07-10 10:34:52
  */
 const path = require('path')
 const webpack = require('webpack')
@@ -77,31 +77,32 @@ const fileLoader = [{
           '/assets/img' : '/img'
       }
     },
-    {
-      loader: 'image-webpack-loader',
-      options: {
-        disable: true,
-        mozjpeg: {
-          progressive: true,
-          quality: 65
-        },
-        // optipng.enabled: false will disable optipng
-        optipng: {
-          enabled: false
-        },
-        pngquant: {
-          quality: [0.65, 0.90],
-          speed: 4
-        },
-        gifsicle: {
-          interlaced: false
-        },
-        // the webp option will enable WEBP
-        webp: {
-          quality: 75
-        }
-      }
-    }
+    // {
+    //   loader: 'image-webpack-loader',
+    //   options: {
+    //     disable: true,
+    //     mozjpeg: {
+    //       progressive: true,
+    //       quality: 65
+    //     },
+    //     // optipng.enabled: false will disable optipng
+    //     optipng: {
+    //       enabled: false
+    //     },
+    //     pngquant: {
+    //       quality: [0.65, 0.90],
+    //       speed: 4,
+    //       enabled: false
+    //     },
+    //     gifsicle: {
+    //       interlaced: false
+    //     },
+    //     // the webp option will enable WEBP
+    //     webp: {
+    //       quality: 75
+    //     }
+    //   }
+    // }
   ]
 }]
 const fontLoader = [{
