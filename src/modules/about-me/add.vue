@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-07-03 15:00:16
- * @LastEditTime: 2020-07-10 11:43:57
+ * @LastEditTime: 2020-07-10 16:42:12
 -->
 <template>
   <div :class="prefix">
@@ -131,7 +131,7 @@ import { Input, Cascader, Form, FormItem, Icon, Link, DatePicker, Row, Col } fro
 import { mapActions } from 'vuex'
 import Divider from '@/modules/components/divider.vue'
 import Editor from '@tinymce/tinymce-vue'
-import 'tinymce/tinymce'
+import tinymce from 'tinymce'
 import 'tinymce/themes/silver'
 
 // A theme is also required
@@ -272,9 +272,9 @@ export default {
       // }
     })
   }),
-  // mounted () {
-  //   tinymce.init({})
-  // },
+  mounted () {
+    tinymce.init({})
+  },
   methods: {
     ...mapActions('weather', ['fetchArea']),
     $_addNewResume() {
