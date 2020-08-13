@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-07-03 09:30:53
- * @LastEditTime: 2020-07-03 10:07:58
+ * @LastEditTime: 2020-07-31 11:34:05
 -->
 <template>
   <!-- 制作个人简历 -->
@@ -16,7 +16,10 @@ export default {
   data: () => ({
     prefix: PREFIX
   }),
-  methods: {}
+  mounted() {
+  },
+  methods: {
+  }
 }
 </script>
 <style lang="scss">
