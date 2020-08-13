@@ -3,7 +3,7 @@
  # @LastEditors: sam.hongyang
 # @Description: function description
 # @Date: 2020-07-01 12:10:27
- # @LastEditTime: 2020-07-10 10:59:29
+ # @LastEditTime: 2020-08-13 14:10:19
 ###
 echo "start deployment"
 # WEB_PATH='/root/workspace'
@@ -42,9 +42,6 @@ package_md5_old=$(cat $md5|sed 's/ //g')
 # 对象对比判断
 if [ "$package_md5_new" == "$package_md5_old" ];then
   echo "package.json is not changed"
-  creatmd5
-
-  npm install
 
   echo "start build"
   npm run build:prod
