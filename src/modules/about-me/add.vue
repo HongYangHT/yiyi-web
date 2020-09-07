@@ -3,7 +3,7 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-07-03 15:00:16
- * @LastEditTime: 2020-07-10 16:42:12
+ * @LastEditTime: 2020-09-07 19:32:11
 -->
 <template>
   <div :class="prefix">
@@ -51,9 +51,9 @@
           </div>
           <div :class="prefix + '__resume__form--content'" v-else>
             <template v-for="(form, index) in author.resumes">
-              <el-form :ref="'resume' + index" :model="form" :rules="resumeRules" :key="index" label-width="100px">
+              <el-form :ref="'resume' + index" :model="form" :rules="resumeRules" :key="index" label-width="100px" label-position="left">
                 <el-row>
-                  <el-col :span="9">
+                  <el-col :span="9" class="pr-6">
                     <el-form-item prop="virtualTime" label="在职时间">
                       <el-date-picker
                         v-model="form.virtualTime"
@@ -65,18 +65,18 @@
                       </el-date-picker>
                     </el-form-item>
                   </el-col>
-                  <el-col :span="5">
+                  <el-col :span="5" class="pr-6">
                     <el-form-item prop="virtualArea" label="所在城市">
                       <i class="el-icon-location"></i>
                       <el-cascader v-model="form.virtualArea" :props="getProps()" size="small" placeholder="请选择地址" clearable></el-cascader>
                     </el-form-item>
                   </el-col>
-                  <el-col :span="5">
+                  <el-col :span="5" class="pr-6">
                     <el-form-item prop="location" label="所在公司">
                       <el-input v-model="form.location" :maxlength="100" prefix-icon="el-icon-s-home" size="small" placeholder="请输入所在公司" clearable></el-input>
                     </el-form-item>
                   </el-col>
-                  <el-col :span="5">
+                  <el-col :span="5" class="pr-6">
                     <el-form-item prop="role" label="公司职位">
                       <el-input v-model="form.role" :maxlength="100" prefix-icon="el-icon-monitor" size="small" placeholder="请输入在公司职位" clearable></el-input>
                     </el-form-item>
@@ -86,12 +86,14 @@
 
               <el-form :ref="'resume__content' + index" :model="form" :rules="resumeRules" :key="'content' + index">
                 <el-form-item prop="content">
-                  <editor v-model="form.content" :init="editorInit">
-
-                  </editor>
+                  <editor v-model="form.content" :init="editorInit"></editor>
                 </el-form-item>
               </el-form>
             </template>
+            <divider :scale="0.3" color="rgba(0, 0, 0, .6)"></divider>
+            <div :class="prefix + '__resume__form--add'">
+              <el-link type="primary" @click="$_addNewResume">添加记录</el-link>
+            </div>
           </div>
         </div>
       </div>
@@ -100,7 +102,40 @@
         <divider :scale="0.3" color="rgba(0, 0, 0, .6)"></divider>
         <div :class="prefix + '__education__form'">
           <div :class="prefix + '__education__form--empty'" v-if="author.educations && !author.educations.length">
-            暂无记录，<el-link type="primary">马上添加</el-link>
+            暂无记录，<el-link type="primary" @click="$_addNewEducation">马上添加</el-link>
+          </div>
+          <div :class="prefix + '__education__form--content'" v-else>
+            <template v-for="(form, index) in author.educations">
+              <el-form :ref="'education' + index" :model="form" :rules="educationRules" :key="index" label-width="100px" label-position="left">
+                <el-row>
+                  <el-col :span="6" class="pr-6">
+                    <el-form-item prop="virtualArea" label="所在城市">
+                      <i class="el-icon-location"></i>
+                      <el-cascader v-model="form.virtualArea" :props="getProps()" size="small" placeholder="请选择地址" clearable></el-cascader>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="6" class="pr-6">
+                    <el-form-item prop="school" label="学校">
+                      <el-input v-model="form.school" :maxlength="100" prefix-icon="el-icon-s-home" size="small" placeholder="请输入学校" clearable></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="6" class="pr-6">
+                    <el-form-item prop="majoring" label="专业">
+                      <el-input v-model="form.majoring" :maxlength="100" prefix-icon="el-icon-s-promotion" size="small" placeholder="请输入专业" clearable></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="6" class="pr-6">
+                    <el-form-item prop="education" label="学历">
+                      <el-input v-model="form.education" :maxlength="100" prefix-icon="el-icon-collection-tag" size="small" placeholder="请输入学历" clearable></el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+              </el-form>
+            </template>
+            <divider :scale="0.3" color="rgba(0, 0, 0, .6)"></divider>
+            <div :class="prefix + '__education__form--add'">
+              <el-link type="primary" @click="$_addNewEducation">添加记录</el-link>
+            </div>
           </div>
         </div>
       </div>
@@ -108,7 +143,7 @@
         <h4>技能</h4>
         <divider :scale="0.3" color="rgba(0, 0, 0, .6)"></divider>
         <div :class="prefix + '__skill__form'">
-          <div :class="prefix + '__skill__form--empty'" v-if="author.skill && !author.skill.length">
+          <div :class="prefix + '__skill__form--empty'" v-if="author.skills && !author.skills.length">
             暂无记录，<el-link type="primary">马上添加</el-link>
           </div>
         </div>
@@ -117,7 +152,7 @@
         <h4>爱好</h4>
         <divider :scale="0.3" color="rgba(0, 0, 0, .6)"></divider>
         <div :class="prefix + '__favor__form'">
-          <div :class="prefix + '__favor__form--empty'" v-if="author.favor && !author.favor.length">
+          <div :class="prefix + '__favor__form--empty'" v-if="author.favors && !author.favors.length">
             暂无记录，<el-link type="primary">马上添加</el-link>
           </div>
         </div>
@@ -129,6 +164,8 @@
 <script>
 import { Input, Cascader, Form, FormItem, Icon, Link, DatePicker, Row, Col } from 'element-ui'
 import { mapActions } from 'vuex'
+import clonedeep from 'lodash.clonedeep'
+
 import Divider from '@/modules/components/divider.vue'
 import Editor from '@tinymce/tinymce-vue'
 import tinymce from 'tinymce'
@@ -168,6 +205,7 @@ import 'tinymce/skins/ui/oxide/content.min.css'
 import 'tinymce/skins/content/default/content.min.css'
 
 const PREFIX = 'about-me'
+// NOTE: 设置简历原始数据
 let resume = {
   virtualTime: [],
   virtualArea: [],
@@ -181,6 +219,25 @@ let resume = {
   endTime: '',
   content: '', // 具体工作内容
 }
+
+// NOTE: 设置教育经历原始数据
+let education = {
+  virtualArea: [],
+  position: '', // 所在城市， 拼接省市
+  province: '',
+  city: '',
+  school: '', //学校
+  majoring: '', //专业
+  education: '', //学历
+}
+
+// NOTE: 技能
+let skill = {
+
+}
+
+// NOTE: 爱好
+let favor = {}
 
 export default {
   components: {
@@ -208,8 +265,8 @@ export default {
       city: '',
       area: '',
       overview: '',
-      favor: [],
-      skill: [],
+      favors: [],
+      skills: [],
       resumes: [],
       educations: []
     },
@@ -249,7 +306,22 @@ export default {
         required: true, message: '请输入公司职位', trigger: 'blur'
       }]
     }),
+    educationRules: Object.freeze({
+      virtualArea: [{
+        type: 'array', required: true, min: 1, message: '请选择地址', trigger: 'blur'
+      }],
+      school: [{
+        required: true, message: '请输入学校', trigger: 'blur'
+      }],
+      majoring: [{
+        required: true, message: '请输入专业', trigger: 'blur'
+      }],
+      education: [{
+        required: true, message: '请输入学历', trigger: 'blur'
+      }]
+    }),
     editorInit: Object.freeze({
+      content_style: "p { color: #fff; }", // NOTE: 设置编辑区内容颜色
       language_url: '../../common/tinymce/langs/zh_CN.js',// 语言包的路径
       language: 'zh_CN',//语言
       height: 300,//编辑器高度
@@ -278,7 +350,10 @@ export default {
   methods: {
     ...mapActions('weather', ['fetchArea']),
     $_addNewResume() {
-      this.author.resumes.push(resume)
+      this.author.resumes.push(clonedeep(resume))
+    },
+    $_addNewEducation() {
+      this.author.educations.push(clonedeep(education))
     },
     getProps() {
       let that = this

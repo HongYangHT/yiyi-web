@@ -85,7 +85,10 @@ $prefix: 'about-me';
     }
   }
 
-  &__resume {
+  &__resume,
+  &__education,
+  &__skill,
+  &__favor {
     display: flex;
     flex-direction: column;
     margin-top: 40px;
@@ -102,6 +105,14 @@ $prefix: 'about-me';
         align-items: center;
         justify-content: center;
         height: 150px;
+        font-size: 14px;
+      }
+
+      &--add {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 0;
         font-size: 14px;
       }
 
