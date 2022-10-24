@@ -3,12 +3,12 @@
  * @LastEditors: sam.hongyang
  * @Description: function description
  * @Date: 2020-05-20 09:40:03
- * @LastEditTime: 2020-06-02 15:12:42
+ * @LastEditTime: 2022-10-20 15:13:33
 -->
 <template>
   <div :class="prefix">
     <a :class="prefix + '__icp'" href="http://www.beian.gov.cn/portal/registerSystemInfo">
-      <span>浙ICP 备 20016879 号 @2020</span>
+      <span>湘ICP备2022021902号-1 © 2022 ~ {{new Date().getFullYear()}} Shoppee.TOP</span>
     </a>
   </div>
 </template>

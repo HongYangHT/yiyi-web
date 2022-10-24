@@ -1,3 +1,10 @@
+<!--
+ * @Author: sam.hongyang
+ * @LastEditors: sam.hongyang
+ * @Description: function description
+ * @Date: 2022-10-11 16:37:45
+ * @LastEditTime: 2022-10-12 16:12:02
+-->
 # 爬虫项目
 
 > 爬虫项目通用模版
@@ -66,3 +73,7 @@
 - 本地预览打包后代码, 配合 `nginx` 实现反向代理
 
 > npm run server
+
+> scp -P 22 -r /Users/hongyang/workspace/poetry/yiyi-web/dist/* root@121.5.159.127:/workspace/app/shoppee
+> 证书
+> scp -P 22 -r /Users/hongyang/workspace/cert/www.shoppee.top_nginx root@121.5.159.127:/root/cert 

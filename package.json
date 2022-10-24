@@ -17,7 +17,7 @@
     "server": "npm-run-all build openServer",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "changeVersion": "npm version patch --no-git-tag-version",
-    "precommit": "lint-staged",
+
     "build:types": "tsc"
   },
   "author": "movee-frontend",
@@ -145,11 +145,6 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
     }
   }
 }
